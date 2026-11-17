@@ -1,6 +1,6 @@
 // Offline-Betrieb: App-Code aus dem Cache. Spieldaten und Bilder liegen in IndexedDB, nicht hier.
 // index.html und Manifest: erst Netz, dann Cache (Updates kommen an). Alles andere: erst Cache, dann Netz.
-const CACHE = "wuwa-teams-v77";
+const CACHE = "wuwa-teams-v78";
 self.addEventListener("install", (e) => { self.skipWaiting(); e.waitUntil(caches.open(CACHE).then((c) => c.addAll(["./", "./index.html", "./manifest.webmanifest"]))); });
 self.addEventListener("activate", (e) => {
   e.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim()));
